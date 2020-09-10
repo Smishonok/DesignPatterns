@@ -1,9 +1,9 @@
 package ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.gameDev;
 
-import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employ;
+import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employee;
 import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.ProjectManager;
 
-public class GamePM extends Employ implements ProjectManager {
+public class GamePM extends Employee implements ProjectManager {
     public GamePM(int monthSalary) {
         super(monthSalary);
     }

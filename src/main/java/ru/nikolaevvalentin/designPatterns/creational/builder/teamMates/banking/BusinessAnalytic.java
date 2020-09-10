@@ -1,9 +1,9 @@
 package ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.banking;
 
 import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Analytic;
-import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employ;
+import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employee;
 
-public class BusinessAnalytic extends Employ implements Analytic {
+public class BusinessAnalytic extends Employee implements Analytic {
     public BusinessAnalytic(int monthSalary) {
         super(monthSalary);
     }

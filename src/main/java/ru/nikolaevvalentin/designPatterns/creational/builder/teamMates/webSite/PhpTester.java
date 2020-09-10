@@ -1,9 +1,9 @@
 package ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.webSite;
 
-import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employ;
+import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employee;
 import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Tester;
 
-public class PhpTester extends Employ implements Tester {
+public class PhpTester extends Employee implements Tester {
     public PhpTester(int monthSalary) {
         super(monthSalary);
     }

@@ -1,9 +1,9 @@
 package ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.banking;
 
-import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employ;
+import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employee;
 import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.ProjectManager;
 
-public class BankingPM extends Employ implements ProjectManager {
+public class BankingPM extends Employee implements ProjectManager {
 
     public BankingPM(int monthSalary) {
         super(monthSalary);

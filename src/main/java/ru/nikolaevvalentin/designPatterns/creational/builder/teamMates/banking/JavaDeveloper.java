@@ -1,9 +1,9 @@
 package ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.banking;
 
 import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Developer;
-import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employ;
+import ru.nikolaevvalentin.designPatterns.creational.builder.teamMates.Employee;
 
-public class JavaDeveloper extends Employ implements Developer {
+public class JavaDeveloper extends Employee implements Developer {
 
     public JavaDeveloper(int monthSalary) {
         super(monthSalary);

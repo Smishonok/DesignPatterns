@@ -6,40 +6,40 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProjectTeam {
-    private List<Employ> teamMembers;
+    private List<Employee> teamMembers;
 
     public ProjectTeam() {
         teamMembers = new ArrayList<>();
     }
 
     public ProjectTeam addAnalytic(Analytic analytic) {
-        teamMembers.add((Employ)analytic);
+        teamMembers.add((Employee)analytic);
         return this;
     }
 
     public ProjectTeam addDeveloper(Developer developer) {
-        teamMembers.add((Employ) developer);
+        teamMembers.add((Employee) developer);
         return this;
     }
 
     public ProjectTeam addTester(Tester tester) {
-        teamMembers.add((Employ)tester);
+        teamMembers.add((Employee)tester);
         return this;
     }
 
     public ProjectTeam addManager(ProjectManager manager) {
-        teamMembers.add((Employ) manager);
+        teamMembers.add((Employee) manager);
         return this;
     }
 
     public int  getTeamMonthSalary() {
         return teamMembers
                 .stream()
-                .map(Employ::getMonthSalary)
+                .map(Employee::getMonthSalary)
                 .reduce(Integer::sum).orElse(0);
     }
 
     public void work() {
-        teamMembers.forEach(Employ::work);
+        teamMembers.forEach(Employee::work);
     }
 }
