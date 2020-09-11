@@ -1,10 +1,14 @@
 package ru.nikolaevvalentin.designPatterns.structural.proxy;
 
+import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DBProxy implements DBProxyInterface {
+public class DBProxy implements DBProxyInterface, Serializable {
+
+
+    private static final long serialVersionUID = 405087766288958560L;
 
     private BaseDBInterface mainDataBase;
     private Class<? extends BaseDBInterface> dbClass;
@@ -16,7 +20,7 @@ public class DBProxy implements DBProxyInterface {
         this.dbClass = dbClass;
     }
 
-    private void initiateDataBase() throws ReflectiveOperationException {
+    private void initiateDataBase() {
         try {
             if (mainDataBase == null) {
                 System.out.println("Initialise data base.");
@@ -26,12 +30,12 @@ public class DBProxy implements DBProxyInterface {
             }
         } catch (InstantiationException | IllegalAccessException | IllegalArgumentException |
                 InvocationTargetException | NoSuchMethodException | SecurityException e) {
-            throw new ReflectiveOperationException("Data base class can`t be loaded.", e);
+            throw new ProxyException("Data base class can`t be loaded.", e);
         }
     }
 
     @Override
-    public User getUser(int id) throws ReflectiveOperationException {
+    public User getUser(int id)  {
         User user;
         if (cash.containsKey(id)) {
             System.out.println("Getting user from cash...");
@@ -46,7 +50,7 @@ public class DBProxy implements DBProxyInterface {
     }
 
     @Override
-    public void addUser(User user) throws ReflectiveOperationException {
+    public void addUser(User user) {
         System.out.println("Adding user to cash...");
         addedUserCash.put(user.getId(), user);
         cash.put(user.getId(), user);
