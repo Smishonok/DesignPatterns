@@ -6,7 +6,7 @@ public interface BaseDBInterface {
 
     User getUser(int id) throws ReflectiveOperationException;
 
-    void setUser(User user) throws ReflectiveOperationException;
+    void addUser(User user) throws ReflectiveOperationException;
 
     void removeUser(int id);
 }

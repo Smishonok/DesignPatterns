@@ -4,13 +4,13 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DBProxy implements BaseDBInterface {
+public class DBProxy implements DBProxyInterface {
 
     private BaseDBInterface mainDataBase;
     private Class<? extends BaseDBInterface> dbClass;
 
-    Map<Integer, User> cash = new HashMap<>();
-    Map<Integer, User> addedUserCash = new HashMap<>();
+    private Map<Integer, User> cash = new HashMap<>();
+    private Map<Integer, User> addedUserCash = new HashMap<>();
 
     public DBProxy(Class<? extends BaseDBInterface> dbClass) {
         this.dbClass = dbClass;
@@ -40,25 +40,35 @@ public class DBProxy implements BaseDBInterface {
             System.out.println("Getting user from data base...");
             initiateDataBase();
             user = mainDataBase.getUser(id);
+            cash.put(user.getId(), user);
         }
         return user;
     }
 
     @Override
-    public void setUser(User user) throws ReflectiveOperationException {
+    public void addUser(User user) throws ReflectiveOperationException {
+        System.out.println("Adding user to cash...");
         addedUserCash.put(user.getId(), user);
-        if (addedUserCash.size() > 5) {
+        cash.put(user.getId(), user);
+        if (addedUserCash.size() >= 5) {
+            System.out.println("Send data from cash to data base...");
             initiateDataBase();
             for (User u : addedUserCash.values()) {
-                mainDataBase.setUser(u);
+                mainDataBase.addUser(u);
             }
+            System.out.println("Cleaning the cash...");
+            addedUserCash.clear();
         }
-        addedUserCash.clear();
     }
 
     @Override
     public void removeUser(int id) {
         cash.remove(id);
         mainDataBase.removeUser(id);
+    }
+
+    @Override
+    public void cleanCash() {
+        cash.clear();
     }
 }

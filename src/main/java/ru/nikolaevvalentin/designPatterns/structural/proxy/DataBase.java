@@ -13,7 +13,7 @@ public class DataBase implements BaseDBInterface {
     }
 
     @Override
-    public void setUser(User user) {
+    public void addUser(User user) {
         users.put(user.getId(), user);
     }
 

@@ -17,7 +17,7 @@ public class User {
     private LocalDateTime birthDay;
 
     public User(String name) {
-        this.id   = lastUserId++;
+        this.id   = lastUserId;
         this.name = name;
     }
 
