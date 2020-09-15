@@ -11,23 +11,26 @@ public class liteWeigherMain {
                 .totalMemory();
         System.out.println(
                 String.format("JVM allocated memory before test: %,d k", memoryBeforeTest / 1000));
-        Sprite fullLeaf = new FullLeaf();
-        Sprite halfLeaf = new HalfLeaf();
-        Sprite leafWithHoles = new LeafWithHoles();
-        Color greenLeaf = new Color("greenCode");
-        Color redLeaf = new Color("redCode");
-        Color yellowLeaf = new Color("yellowCode");
+        FullLeaf fullLeaf = new FullLeaf();
+        HalfLeaf halfLeaf = new HalfLeaf();
+        LeafWithHoles leafWithHoles = new LeafWithHoles();
+        Color green = new Color("greenCode");
+        Color red = new Color("redCode");
+        Color yellow = new Color("yellowCode");
 
-        List<Leaf> liteLeafs = new ArrayList<>();
-        for (int i = 0; i < 1_000_000; i++) {
-            liteLeafs.add(new Leaf(i, i, i, i, fullLeaf, greenLeaf));
-        }
-        for (int i = 0; i < 1_000_000; i++) {
-            liteLeafs.add(new Leaf(i, i, i, i, halfLeaf, redLeaf));
-        }
-        for (int i = 0; i < 1_000_000; i++) {
-            liteLeafs.add(new Leaf(i, i, i, i, leafWithHoles, yellowLeaf));
-        }
+//        LeafFactory factory = new LeafFactory();
+//        List<Leaf> liteLeafs = new ArrayList<>();
+//        for (int i = 0; i < 10_000_000; i++) {
+//            liteLeafs.add(factory.getLeaf(i,i,i,i,new FullLeaf(),new Color("greenCode")));
+//        }
+//        for (int i = 0; i < 10_000_000; i++) {
+//            liteLeafs.add(factory.getLeaf(i, i, i, i, new HalfLeaf(), new Color("redCode")));
+//        }
+//        for (int i = 0; i < 10_000_000; i++) {
+//            liteLeafs.add(factory.getLeaf(i, i, i, i, new LeafWithHoles(), new Color("yellowCode")));
+//        }
+//
+//        TimeUnit.SECONDS.sleep(5);
 
         long memoryWithLiteWeigher = Runtime
                 .getRuntime()
@@ -40,13 +43,13 @@ public class liteWeigherMain {
         TimeUnit.SECONDS.sleep(5);
 
         List<Leaf> heavyLeafs = new ArrayList<>();
-        for (int i = 0; i < 1_000_000; i++) {
+        for (int i = 0; i < 10_000_000; i++) {
             heavyLeafs.add(new Leaf(i, i, i, i, new FullLeaf(), new Color("greenCode")));
         }
-        for (int i = 0; i < 1_000_000; i++) {
+        for (int i = 0; i < 10_000_000; i++) {
             heavyLeafs.add(new Leaf(i, i, i, i, new HalfLeaf(), new Color("redCode")));
         }
-        for (int i = 0; i < 1_000_000; i++) {
+        for (int i = 0; i < 10_000_000; i++) {
             heavyLeafs.add(new Leaf(i, i, i, i, new LeafWithHoles(), new Color("yellowCode")));
         }
 
@@ -58,7 +61,7 @@ public class liteWeigherMain {
         System.out.println(String.format("Difference: %,d k",
                                          (memoryWithHeavyWeigher - memoryWithLiteWeigher) / 1000));
 
-        System.out.println(liteLeafs.size());
+//        System.out.println(liteLeafs.size());
         System.out.println(heavyLeafs.size());
     }
 }
