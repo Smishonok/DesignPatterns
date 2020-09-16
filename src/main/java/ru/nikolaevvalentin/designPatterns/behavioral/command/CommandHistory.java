@@ -1,0 +1,20 @@
+package ru.nikolaevvalentin.designPatterns.behavioral.command;
+
+import java.util.Stack;
+
+public class CommandHistory {
+
+    private Stack<Command> history = new Stack<>();
+
+    public void add(Command command) {
+        history.push(command);
+    }
+
+    public Command getLastCommand() {
+        return history.pop();
+    }
+
+    public boolean isEmpty() {
+        return history.isEmpty();
+    }
+}
